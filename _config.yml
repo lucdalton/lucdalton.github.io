@@ -27,6 +27,9 @@ github_username:  lucdalton
 # Build settings
 markdown: kramdown
 theme: minima
+#theme: jekyll-theme-cayman
+#theme: jekyll-theme-minimal
+
 plugins:
   - jekyll-feed
 

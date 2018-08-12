@@ -1,0 +1,142 @@
+	.section	__TEXT,__text,regular,pure_instructions
+	.macosx_version_min 10, 13
+	.globl	__ZN10BinaryTree6InsertEiP4node ## -- Begin function _ZN10BinaryTree6InsertEiP4node
+	.p2align	4, 0x90
+__ZN10BinaryTree6InsertEiP4node:        ## @_ZN10BinaryTree6InsertEiP4node
+	.cfi_startproc
+## BB#0:
+	pushq	%rbp
+Lcfi0:
+	.cfi_def_cfa_offset 16
+Lcfi1:
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+Lcfi2:
+	.cfi_def_cfa_register %rbp
+	subq	$48, %rsp
+	movq	%rdi, -8(%rbp)
+	movl	%esi, -12(%rbp)
+	movq	%rdx, -24(%rbp)
+	movq	-8(%rbp), %rdx
+	movl	-12(%rbp), %esi
+	movq	-24(%rbp), %rdi
+	cmpl	(%rdi), %esi
+	movq	%rdx, -32(%rbp)         ## 8-byte Spill
+	jge	LBB0_5
+## BB#1:
+	movq	-24(%rbp), %rax
+	cmpq	$0, 8(%rax)
+	je	LBB0_3
+## BB#2:
+	movl	-12(%rbp), %esi
+	movq	-24(%rbp), %rax
+	movq	8(%rax), %rdx
+	movq	-32(%rbp), %rdi         ## 8-byte Reload
+	callq	__ZN10BinaryTree6InsertEiP4node
+	jmp	LBB0_4
+LBB0_3:
+	movl	$24, %eax
+	movl	%eax, %edi
+	callq	__Znwm
+	xorl	%esi, %esi
+	movl	$24, %ecx
+	movl	%ecx, %edx
+	movq	%rax, %rdi
+	movq	%rax, -40(%rbp)         ## 8-byte Spill
+	callq	_memset
+	movq	-24(%rbp), %rax
+	movq	-40(%rbp), %rdx         ## 8-byte Reload
+	movq	%rdx, 8(%rax)
+	movl	-12(%rbp), %ecx
+	movq	-24(%rbp), %rax
+	movq	8(%rax), %rax
+	movl	%ecx, (%rax)
+	movq	-24(%rbp), %rax
+	movq	8(%rax), %rax
+	movq	$0, 8(%rax)
+	movq	-24(%rbp), %rax
+	movq	8(%rax), %rax
+	movq	$0, 16(%rax)
+LBB0_4:
+	jmp	LBB0_11
+LBB0_5:
+	movl	-12(%rbp), %eax
+	movq	-24(%rbp), %rcx
+	cmpl	(%rcx), %eax
+	jle	LBB0_10
+## BB#6:
+	movq	-24(%rbp), %rax
+	cmpq	$0, 16(%rax)
+	je	LBB0_8
+## BB#7:
+	movl	-12(%rbp), %esi
+	movq	-24(%rbp), %rax
+	movq	16(%rax), %rdx
+	movq	-32(%rbp), %rdi         ## 8-byte Reload
+	callq	__ZN10BinaryTree6InsertEiP4node
+	jmp	LBB0_9
+LBB0_8:
+	jmp	LBB0_9
+LBB0_9:
+	jmp	LBB0_10
+LBB0_10:
+	jmp	LBB0_11
+LBB0_11:
+	addq	$48, %rsp
+	popq	%rbp
+	retq
+	.cfi_endproc
+                                        ## -- End function
+	.globl	__ZN10BinaryTree6InsertEi ## -- Begin function _ZN10BinaryTree6InsertEi
+	.p2align	4, 0x90
+__ZN10BinaryTree6InsertEi:              ## @_ZN10BinaryTree6InsertEi
+	.cfi_startproc
+## BB#0:
+	pushq	%rbp
+Lcfi3:
+	.cfi_def_cfa_offset 16
+Lcfi4:
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+Lcfi5:
+	.cfi_def_cfa_register %rbp
+	subq	$32, %rsp
+	movq	%rdi, -8(%rbp)
+	movl	%esi, -12(%rbp)
+	movq	-8(%rbp), %rdi
+	cmpq	$0, (%rdi)
+	movq	%rdi, -24(%rbp)         ## 8-byte Spill
+	jne	LBB1_2
+## BB#1:
+	movl	$24, %eax
+	movl	%eax, %edi
+	callq	__Znwm
+	xorl	%esi, %esi
+	movl	$24, %ecx
+	movl	%ecx, %edx
+	movq	%rax, %rdi
+	movq	%rax, -32(%rbp)         ## 8-byte Spill
+	callq	_memset
+	movq	-24(%rbp), %rax         ## 8-byte Reload
+	movq	-32(%rbp), %rdx         ## 8-byte Reload
+	movq	%rdx, (%rax)
+	movl	-12(%rbp), %ecx
+	movq	(%rax), %rdi
+	movl	%ecx, (%rdi)
+	jmp	LBB1_4
+LBB1_2:
+	movl	-12(%rbp), %eax
+	movq	-24(%rbp), %rcx         ## 8-byte Reload
+	movq	(%rcx), %rdx
+	cmpl	(%rdx), %eax
+	jge	LBB1_4
+## BB#3:
+	jmp	LBB1_4
+LBB1_4:
+	addq	$32, %rsp
+	popq	%rbp
+	retq
+	.cfi_endproc
+                                        ## -- End function
+
+.subsections_via_symbols
