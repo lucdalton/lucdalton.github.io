@@ -8,7 +8,7 @@ permalink: avltrees
 
 ![tree](/assets/tree.png){: .center-image }
 
-The repository used for this post can be found here: [AVL Tree]([https://github.com/lucdalton/AVLTree)
+The repository used for this post can be found here: [AVL Tree](https://github.com/lucdalton/AVLTree)
 
 
 
