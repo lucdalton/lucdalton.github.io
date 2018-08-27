@@ -16,8 +16,7 @@
 title: another tech blog
 email: lucdalton@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Software Developer.  
-  Blockchain, Crypto & Mobile. 
+  Software Developer
 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
