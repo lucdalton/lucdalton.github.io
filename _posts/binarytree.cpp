@@ -7,6 +7,7 @@ typedef struct node{
 
 	int lweight;
 	int rweight;
+	int height;
 }node;
 
 node* NewNode(){
@@ -15,6 +16,7 @@ node* NewNode(){
 	n->right = nullptr;
 	n->lweight = 0;
 	n->rweight = 0;
+	n->height = 0;
 	return n;
 }
 
@@ -31,7 +33,10 @@ public:
 	void PrintTree();
 
 private:
-	void Insert(int key, node* n);
+	//void Insert(int key, node* n);
+
+	void Insert(int key, node* n, int height);
+
 	node* root;
 
 	void PrintTree(node*);
@@ -45,7 +50,7 @@ private:
 	void Shift(node*, node*);
 
 };
-
+/*
 void BinaryTree::Insert(int key, node* n){
 	if(key < n->key){
 		if(n->left != nullptr)
@@ -55,14 +60,6 @@ void BinaryTree::Insert(int key, node* n){
 		}
 		else{
 			// reached the end of the tree branch
-			/*
-			n->left = new node();
-			n->left->key = key;
-			n->left->left = nullptr;
-			n->left->right = nullptr;
-			n->left->lweight = 0;
-			n->left->rweight = 0;
-			*/
 			n->left = NewNode();
 			n->left->key = key;
 		}
@@ -72,38 +69,99 @@ void BinaryTree::Insert(int key, node* n){
 			Insert(key, n->right);
 		}else{
 			// reached end of tree branch
-			/*
-			n->right = new node();
-			n->right->key = key;
-			n->right->left = nullptr;
-			n->right->right = nullptr;
-			n->right->lweight = 0;
-			n->right->rweight = 0;
-			*/
 			n->right = NewNode();
 			n->right->key = key;
 		}
 	}
+
 }
+*/
 
 void BinaryTree::Insert(int key){
 	
 	if(root == nullptr){
-		/*
-		root = new node();
-		root->key = key;
-		root->left = nullptr;
-		root->right = nullptr;
-		root->lweight = 0;
-		root->rweight = 0;
-		*/
 		root = NewNode();
 		root->key = key;
 		return;
 	}
 
-	Insert(key, root);
+	Insert(key, root, root->height);
+	
+	/*
+	node* pc = root;
+	int depth = 0;
+	while(pc!=nullptr){
+		pc = Insert(key, pc);
+		depth++;	
+	}*/
 }
+
+
+void BinaryTree::Insert(int key, node* n, int height){
+	/*
+	if(n==nullptr){
+		// end of branch
+		n = NewNode();
+		n->key = key;
+	}
+	else if(key < n->key){
+		n->left = Insert(key, n->left);
+	}else if(key > n->key){
+		n->right = Insert(key, n->right);
+	}
+
+	node* nb = root;
+	int depth = 0;
+	while(nb!=nullptr){
+
+	}
+	*/
+	/*
+	if(key < n->key){
+		if(n->left==nullptr){
+			n->left = NewNode();
+			n->left = 
+		}
+		return n->left;
+	}
+	return n->right;
+	*/
+
+	if(key < n->key){
+		if(n->left==nullptr){
+			n->left = NewNode();
+			n->left->key = key;
+			n->left->height = height;			
+		}else{
+			Insert(key, n->left, height+1);
+		}
+	}else if(key > n->key){
+		if(n->right==nullptr){
+			n->right = NewNode();
+			n->right->key = key;
+			n->right->height = height;
+		}else{
+			Insert(key, n->right, height+1);
+		}
+	}
+
+	/* without repeating code
+	node** k;
+	if(key < n->key)
+		k = &(n->left);
+	else
+		k = &(n->right);
+	if(*k==nullptr){
+		*k = NewNode();
+		(*k)->key = key;
+		(*k)->depth = depth;
+	}else{
+		Insert(key, (*k), depth++);
+	}
+	*/
+
+}
+
 
 void BinaryTree::BalanceRight(node* n){
 	// 
@@ -121,32 +179,42 @@ void BinaryTree::RotateLeft(node* n){
 
 }
 
+
 void Shift_0(node* n, node* parent){
 	// case 0
-	if(parent->left->key == n->key){
-		// node is on the left
-		parent->left = n->left;
-	}else{
+	if(parent->left!=nullptr){
+		if(parent->left->key == n->key){
+			// node is on the left
+			parent->left = n->left;
+			n->left->right = n;
+			n->left = nullptr;
+		}		
+	}
+	else{
 		// node is on the right
 		parent->right = n->left;
-	}	
-	n->left->right = n;
-	n->left = nullptr;
+		n->left->right = n;
+		n->left = nullptr;
+
+	}
 }
 
 void Shift_1(node* n, node* parent){
 	// case 1
-	if(parent->left->key == n->key){
-		// node is on the left
-		parent->left = n->left->right;
-		n->left->right->right = n;
-		n->left->right->left = n->left;
+	if(parent->left!=nullptr){
+		if(parent->left->key == n->key){
+			// node is on the left
+			parent->left = n->left->right;
+			n->left->right->right = n;
+			n->left->right->left = n->left;
 
-		n->left->right = nullptr;
-		n->left = nullptr;
-		n->right = nullptr;
+			n->left->right = nullptr;
+			n->left = nullptr;
+			n->right = nullptr;
 
-	}else{
+		}		
+	}
+	else{
 		// node is on the right
 		parent->right = n->left->right;
 		n->left->right->right = n;
@@ -160,8 +228,8 @@ void Shift_1(node* n, node* parent){
 
 void BinaryTree::Shift(node* n, node* parent){
 	/*
-		  n                p
-		 / \              /
+		  n            1
+		 / \            \
 	    2   5			 5		5		3			
 		   /			/		 \	     \
 		  4			   3		  7	      4
@@ -215,8 +283,36 @@ void BinaryTree::Shift(node* n, node* parent){
 	}
 }
 
+void PrintNode(node* n){
+	std::cout << "key: " << n->key << " height: " << n->height;
+	if(n->left!=nullptr){
+		std::cout << " :left " << n->left->key;
+	}
+	else{
+		std::cout << " :left null";
+	}
+
+	if(n->right!=nullptr){
+		std::cout << " right: " << n->right->key;
+	}
+	else{
+		std::cout << " right: null";
+	}
+	std::cout << "\n";
+}
+
 void BinaryTree::PrintTree(node* n){
 //	printf("%i\n", n->key);
+
+	PrintNode(n);
+	if(n->left!=nullptr)
+		PrintNode(n->left);
+
+	if(n->right!=nullptr)
+		PrintNode(n->right);
+
+	/*
+
 	std::cout << "key: " << n->key << "\n";
 	if(n->left == nullptr){
 		std::cout << " end branch left";
@@ -229,30 +325,19 @@ void BinaryTree::PrintTree(node* n){
 	}else{
 		PrintTree(n->right);
 	}
+	*/
+
+
 }
 
 void BinaryTree::PrintTree(){
 	PrintTree(root);
 }
 
-void PrintNode(node* n){
-	std::cout << n->key;
-	if(n->left!=nullptr)
-		std::cout << " :left " << n->left->key;
-	else
-		std::cout << " :left null";
 
-	if(n->right!=nullptr)
-		std::cout << " right: " << n->right->key;
-	else
-		std::cout << " right: null";
-
-	std::cout << "\n";
-
-}
 
 int main(){
-	/*
+	
 	BinaryTree* binaryTree = new BinaryTree();
 	binaryTree->Insert(2);
 	binaryTree->Insert(3);
@@ -261,21 +346,22 @@ int main(){
 	binaryTree->Insert(10);
 
 	binaryTree->PrintTree();
-	*/
+	
 
+	/*
 	node* n1 = NewNode();
 	node* n2 = NewNode();
 	node* n3 = NewNode();
 	node* n4 = NewNode();
 
-	n1->key = 6;
+	n1->key = 1;
 	n2->key = 5;
-	n3->key = 3;
-	n4->key = 4;
+	n3->key = 4;
+	n4->key = 3;
 
-	n1->left = n2;
+	n1->right = n2;
 	n2->left = n3;
-	n3->right = n4;
+	n3->left = n4;
 	
 	//std::cout << n1->key << " :left " << n1->left->key << " right: " << n1->right->key; //<< "\n";
 
@@ -284,16 +370,18 @@ int main(){
 	PrintNode(n3);
 	PrintNode(n4);
 
-	Shift_1(n2, n1);
+	Shift_0(n2, n1);
 	
 	std::cout << "\n";
 	
+
+
 	PrintNode(n1);
 	PrintNode(n2);
 	PrintNode(n3);
 	PrintNode(n4);
 
-	
+	*/
 
 
 	return 0;
