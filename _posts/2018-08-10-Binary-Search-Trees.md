@@ -224,3 +224,73 @@ node* shiftRight_v(node* n){
 {% endhighlight %}
 
 
+<h2>Deleting a node</h2>
+Removing a node from the tree is a little more complicated, but not much.  In the example code it is implemented recursively similar to the node insertion function.  Once the node n to be removed has been found through traversing the tree, the smallest node in its right subtree is found, and switches key value with it.  The tree is then traversed from that node, to remove the node that has just replaced it.
+
+{% highlight C %}
+
+node* BinaryTree::Remove(int key, node* n){
+    
+    node* temp;
+    
+    if(n==nullptr)
+        return nullptr;
+    
+    if(key < n->key){
+        n->left = Remove(key, n->left);
+    }
+    else if(key > n->key){
+        n->right = Remove(key, n->right);
+    }
+    // when control reaches here we have arrived at the node to remove
+    else if(n->right && n->left){
+        
+        // node has 2 children
+        temp = minNode(n->right);
+        n->key = temp->key;
+        n->right = Remove(n->key, n->right);
+        
+    }else{
+       
+        // node has 1 or 0 children
+        temp = n;
+        if(n->left==nullptr){
+            n = n->right;
+        }else if(n->right==nullptr){
+            n = n->left;
+        }else{
+            return nullptr;
+        }
+        delete temp;
+    }
+    
+    if(n==nullptr)
+        return n;
+    
+    //n->height = max(height(n->left), height(n->right))+1;
+    n->height = maxHeight(n->left, n->right)+1;
+
+    // check node balancing
+    if(height(n->left) - height(n->right) == REBALANCE_HEIGHT)
+    {
+        // left left case
+        if(height(n->left->left) - height(n->left->right) == REBALANCE_HEIGHT-1)
+            return shiftLeft(n);
+        // left right case
+        else
+            return shiftLeft_v(n);
+    }
+    // If right node is deleted, left case
+    else if(height(n->right) - height(n->left) == REBALANCE_HEIGHT)
+    {
+        // right right case
+        if(height(n->right->right) - height(n->right->left) == REBALANCE_HEIGHT-1)
+            return shiftRight(n);
+        // right left case
+        else
+            return shiftRight_v(n);
+    }
+    return n;
+}
+
+{% endhighlight %}
