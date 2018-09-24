@@ -15,7 +15,7 @@ The repository used for this post can be found here: [AVL Tree](https://github.c
 
 
 
-Binary search trees are an efficient data structure for organising data that needs to be searched.  Any data type which can be ordered can be arranged in this data structure.  The tree consists of nodes, starting from the root node at the top of the tree.  A node consists of a key, an optional value, and 2 children.  
+Binary search trees are an efficient data structure for organising data that needs to be searched.  They come in many varieties and variations, the one looked at in this post is the AVL tree (named after inventors Adelson-Velsky and Landis).  AVL trees are self balancing trees, meaning that after any insertion or deletion of a node, it will remain balanced.  Any data type which can be ordered can be arranged in this data structure.  The tree consists of nodes, starting from the root node at the top of the tree.  A node consists of a key, an optional value, and 2 children.  
 
 
 For this example, `int` data type is used for simplicity.
