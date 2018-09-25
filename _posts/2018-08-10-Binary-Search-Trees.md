@@ -6,19 +6,22 @@ categories: programming c++
 permalink: avltrees
 ---
 
-![tree](/assets/tree.png){: .center-image }
+<!--![tree](/assets/tree.png){: .center-image }-->
+<img src="/assets/tree.png" style="display: block; margin: auto; ">
+
+There are a few varieties and variations of trees, this post goes into depth on the AVL tree (named after inventors Adelson-Velsky and Landis).  AVL trees are self balancing binary search trees, meaning it will remain balanced after insertion or deletion of a node.  Any data type which can be ordered can be arranged in this data structure.  The tree consists of nodes, starting from the root node at the top of the tree.  A node consists of a key, an optional value, and 2 children.  
+
 
 The repository used for this post can be found here: [AVL Tree](https://github.com/lucdalton/AVLTree)
 
+<ul style="">
+  <li><a href="#node_insertion">1. Insertion</a></li>
+  <li><a href="#node_removal">2. Removal of a node</a></li>
+</ul>
 
+<br>
 
-
-
-
-Binary search trees are an efficient data structure for organising data that needs to be searched.  They come in many varieties and variations, the one looked at in this post is the AVL tree (named after inventors Adelson-Velsky and Landis).  AVL trees are self balancing trees, meaning that after any insertion or deletion of a node, it will remain balanced.  Any data type which can be ordered can be arranged in this data structure.  The tree consists of nodes, starting from the root node at the top of the tree.  A node consists of a key, an optional value, and 2 children.  
-
-
-For this example, `int` data type is used for simplicity.
+For this example, `int` data type is used for simplicity. (Could also create a generic type which can take any ordered type.)
 {% highlight c %}
 typedef struct node{
     int key;
@@ -75,7 +78,7 @@ AVL trees are one possible binary search tree data structure which keeps the tre
 {% endhighlight %}
 
 Looking at the node with key 3, the right subtree has height 0 and the left subtree has height 2.  
-In this case the height difference of the subtrees is `|0-2| = 2`, so a rebalance is required.  
+In this case the height difference of the subtrees is `|0-2| = 2`, which is greater than 1, so a rebalance is required.  
 
 {% highlight ruby %}
 
@@ -90,7 +93,7 @@ In this case the height difference of the subtrees is `|0-2| = 2`, so a rebalanc
 
 
 
-<h2>Node Insertion</h2>
+<h2 id="node_insertion">Node Insertion</h2>
 Node insertion is pretty easy.  Assuming that the key doesn't already exist somewhere in the tree, you traverse the tree the same as doing a search and find the lowest node in the tree which is closest to the key you're inserting.  For example,
 
 {% highlight ruby %}
@@ -224,7 +227,7 @@ node* shiftRight_v(node* n){
 {% endhighlight %}
 
 
-<h2>Deleting a node</h2>
+<h2 id="node_removal">Deleting a node</h2>
 Removing a node from the tree is a little more complicated, but not much.  In the example code it is implemented recursively similar to the node insertion function.  Once the node n to be removed has been found through traversing the tree, the smallest node in its right subtree is found, and switches key value with it.  The tree is then traversed from that node, to remove the node that has just replaced it.
 
 {% highlight C %}
@@ -294,3 +297,11 @@ node* BinaryTree::Remove(int key, node* n){
 }
 
 {% endhighlight %}
+
+<br>
+<h3>AVL vs Red Black</h3>
+An AVL tree will have better balancing than an RB tree, so lookup time will generally be better.  This is at the tradeoff of insertion/deletion performance.  So if lookup speed is more important, or there will be fewer insertions, an AVL tree will probably perform better.
+
+
+
+
