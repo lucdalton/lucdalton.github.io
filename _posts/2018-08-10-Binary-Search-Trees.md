@@ -9,20 +9,25 @@ permalink: avltrees
 <!--![tree](/assets/tree.png){: .center-image }-->
 <img src="/assets/tree.png" style="display: block; margin: auto; ">
 
-There are a few varieties and variations of trees, this post goes into depth on the AVL tree (named after inventors Adelson-Velsky and Landis).  AVL trees are self balancing binary search trees, meaning it will remain balanced after insertion or deletion of a node.  Any data type which can be ordered can be arranged in this data structure.  The tree consists of nodes, starting from the root node at the top of the tree.  A node consists of a key, an optional value, and 2 children.  
+There are a few varieties and variations of trees, this post takes a look at the AVL tree (named after inventors Adelson-Velsky and Landis).  AVL trees are self balancing binary search trees, meaning it will remain balanced after insertion or deletion of a node.   
 
 
 The repository used for this post can be found here: [AVL Tree](https://github.com/lucdalton/AVLTree)
 
-<ul style="">
-  <li><a href="#node_insertion">1. Insertion</a></li>
+<br>
+<h4>Contents:</h4>
+<ul style="list-style-type:none;">
+  <li><a href="#node_insertion">1. Insertion & balancing</a></li>
   <li><a href="#node_removal">2. Removal of a node</a></li>
+  <li><a href="#red_black_comparison">3. Comparison to Red Black trees</a></li>
 </ul>
 
 <br>
 
+Any data type which can be ordered can be arranged in this data structure.  The tree consists of nodes, starting from the root node at the top of the tree.  A node consists of a key (the ordered type), the height and pointers to it's 2 children. 
+
 For this example, `int` data type is used for simplicity. (Could also create a generic type which can take any ordered type.)
-{% highlight c %}
+{% highlight C %}
 typedef struct node{
     int key;
     node* left;
@@ -299,7 +304,7 @@ node* BinaryTree::Remove(int key, node* n){
 {% endhighlight %}
 
 <br>
-<h3>AVL vs Red Black</h3>
+<h3 id="red_black_comparison">AVL vs Red Black</h3>
 An AVL tree will have better balancing than an RB tree, so lookup time will generally be better.  This is at the tradeoff of insertion/deletion performance.  So if lookup speed is more important, or there will be fewer insertions, an AVL tree will probably perform better.
 
 
