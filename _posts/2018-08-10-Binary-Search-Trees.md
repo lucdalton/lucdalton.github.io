@@ -1,15 +1,15 @@
 ---
 layout: post
-title:  "Self balancing Binary Search Trees"
-date:   2018-05-25 17:14:23 +0800
+title:  "The AVL tree"
+date:   2018-09-25 17:14:23 +0800
 categories: programming c++
 permalink: avltrees
 ---
 
 <!--![tree](/assets/tree.png){: .center-image }-->
-<img src="/assets/tree.png" style="display: block; margin: auto; ">
+<img src="/assets/avl.jpeg" style="display: block; margin: auto; ">
 
-There are a few varieties and variations of trees, this post takes a look at the AVL tree (named after inventors Adelson-Velsky and Landis).  AVL trees are self balancing binary search trees, meaning it will remain balanced after insertion or deletion of a node.   
+This post takes a look at the AVL tree (named after inventors Adelson-Velsky and Landis).  AVL trees are self balancing binary search trees.  After each insertion/removal of a node it will remain balanced. 
 
 
 The repository used for this post can be found here: [AVL Tree](https://github.com/lucdalton/AVLTree)
@@ -17,12 +17,15 @@ The repository used for this post can be found here: [AVL Tree](https://github.c
 <br>
 <h4>Contents:</h4>
 <ul style="list-style-type:none;">
+  <li><a href="#background">0. Background</a></li>
   <li><a href="#node_insertion">1. Insertion & balancing</a></li>
   <li><a href="#node_removal">2. Removal of a node</a></li>
   <li><a href="#red_black_comparison">3. Comparison to Red Black trees</a></li>
 </ul>
 
 <br>
+
+<h2 id="background"> Background </h2>
 
 Any data type which can be ordered can be arranged in this data structure.  The tree consists of nodes, starting from the root node at the top of the tree.  A node consists of a key (the ordered type), the height and pointers to it's 2 children. 
 
