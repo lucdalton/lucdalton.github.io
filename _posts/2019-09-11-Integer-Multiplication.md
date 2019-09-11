@@ -43,7 +43,7 @@ var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
 ctx.lineWidth = 0.5;
 
-let centre = {x:400.5, y:400.5};
+let centre = {x:100.5, y:100.5};
 let radius = 300;
 let n = 301;
 let m = 4;
