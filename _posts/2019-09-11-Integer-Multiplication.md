@@ -35,24 +35,6 @@ function drawCircle(ctx, c, r){
     ctx.stroke();
 } 
 
-/*
-var c = document.getElementById("myCanvas");
-c.width = 400;
-c.height = 300;
-var ctx = c.getContext("2d");
-ctx.lineWidth = 0.5;
-let centre = {x:100.5, y:100.5};
-let radius = 300;
-let n = 301;
-let m = 4;
-drawCircle(ctx, centre, radius);
-let circlePoints = getPointsOnCircle(centre, radius, n);
-for(let i=0; i<n; i++){
-    let j = (i*m)%n;
-    drawLine(ctx, circlePoints[i], circlePoints[j]);
-}
-*/
-
 function Update(width, n, m){
 
     var c = document.getElementById("myCanvas");
@@ -76,3 +58,7 @@ function Update(width, n, m){
 Update(100, 10, 2);
 
 </script>
+
+<button type="button" onclick="Update(200, 15, 7)">Click Me!</button>
+
+
