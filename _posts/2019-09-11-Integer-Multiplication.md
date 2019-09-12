@@ -39,6 +39,7 @@ function drawCircle(ctx, c, r){
     ctx.stroke();
 } 
 
+
 var c = document.getElementById("myCanvas");
 c.width = 400;
 c.height = 300;
@@ -55,6 +56,29 @@ for(let i=0; i<n; i++){
     let j = (i*m)%n;
     drawLine(ctx, circlePoints[i], circlePoints[j]);
 }
+
+function Update(width, n, m){
+
+    var c = document.getElementById("myCanvas");
+    c.width = width;
+    c.height = width;
+    var ctx = c.getContext("2d");
+    ctx.lineWidth = 0.5;
+    let centre = {x:width/2, y:width/2};
+    let radius = width/2;
+    //let n = 301;
+    //let m = 4;
+    
+    drawCircle(ctx, centre, radius);
+    let circlePoints = getPointsOnCircle(centre, radius, n);
+    for(let i=0; i<n; i++){
+        let j = (i*m)%n;
+        drawLine(ctx, circlePoints[i], circlePoints[j]);
+    }
+}
+
+Update(100, 10, 2);
+
 </script>
 
 
