@@ -12,7 +12,7 @@ This post takes a look at the AVL tree (named after inventors Adelson-Velsky and
 
 
 
-<canvas id="myCanvas" width="100" height="700" style="border:1px solid #d3d3d3;width: 100vw;">
+<canvas id="myCanvas" width="100" height="700" style="border:1px solid #d3d3d3;">
 </canvas>
 
 <script>
