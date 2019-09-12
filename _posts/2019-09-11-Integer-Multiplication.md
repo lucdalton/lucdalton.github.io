@@ -56,7 +56,10 @@ Update(100, 10, 2);
 </script>
 <input type="number" placeholder="Type something..." id="myInput1">
 <input type="text" placeholder="Type something..." id="myInput2">
-
+<div>
+    <input type="number" placeholder="Type something..." id="myInput1">
+    <input type="text" placeholder="Type something..." id="myInput2">
+</div>
 <button type="button" onclick="Update(200, 15, 7)">Click Me!</button>
 
 
