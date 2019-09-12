@@ -41,8 +41,9 @@ function drawCircle(ctx, c, r){
 
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
+c.width = 400;
+c.height = 300;
 ctx.lineWidth = 0.5;
-
 let centre = {x:100.5, y:100.5};
 let radius = 300;
 let n = 301;
@@ -54,8 +55,6 @@ for(let i=0; i<n; i++){
     let j = (i*m)%n;
     drawLine(ctx, circlePoints[i], circlePoints[j]);
 }
-c.width = 400;
-c.height = 300;
 </script>
 
 
