@@ -40,9 +40,9 @@ function drawCircle(ctx, c, r){
 } 
 
 var c = document.getElementById("myCanvas");
-var ctx = c.getContext("2d");
 c.width = 400;
 c.height = 300;
+var ctx = c.getContext("2d");
 ctx.lineWidth = 0.5;
 let centre = {x:100.5, y:100.5};
 let radius = 300;
