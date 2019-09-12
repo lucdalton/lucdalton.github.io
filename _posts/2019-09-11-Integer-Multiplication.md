@@ -36,7 +36,6 @@ function drawCircle(ctx, c, r){
 } 
 
 function Update(width, n, m){
-
     var c = document.getElementById("myCanvas");
     c.width = width;
     c.height = width;
@@ -44,9 +43,6 @@ function Update(width, n, m){
     ctx.lineWidth = 0.5;
     let centre = {x:width/2, y:width/2};
     let radius = width/2;
-    //let n = 301;
-    //let m = 4;
-    
     drawCircle(ctx, centre, radius);
     let circlePoints = getPointsOnCircle(centre, radius, n);
     for(let i=0; i<n; i++){
@@ -58,6 +54,8 @@ function Update(width, n, m){
 Update(100, 10, 2);
 
 </script>
+    <input type="number" placeholder="Type something..." id="myInput1">
+    <input type="text" placeholder="Type something..." id="myInput2">
 
 <button type="button" onclick="Update(200, 15, 7)">Click Me!</button>
 
