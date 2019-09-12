@@ -36,10 +36,10 @@ function drawCircle(ctx, c, r){
 } 
 
 function Update(width, n, m){
-    var c = document.getElementById("myCanvas");
+    let c = document.getElementById("myCanvas");
     c.width = width;
     c.height = width;
-    var ctx = c.getContext("2d");
+    let ctx = c.getContext("2d");
     ctx.lineWidth = 0.5;
     let centre = {x:width/2, y:width/2};
     let radius = width/2;
@@ -51,6 +51,18 @@ function Update(width, n, m){
     }
 }
 
+function getModulo(){
+    return parseInt(document.getElementById("ModuloNumber").value, 10);
+}
+
+function getModuloMultiplier(){
+    return parseInt(document.getElementById("ModuloMultiplier").value, 10);
+}
+
+function UpdateButton(){
+    Update(200, getModulo(), getModuloMultiplier());
+}
+
 Update(100, 10, 2);
 
 </script>
@@ -58,6 +70,6 @@ Update(100, 10, 2);
     <input type="number" placeholder="Change Modulo Number" id="ModuloNumber">
     <input type="number" placeholder="Change Multiplier" id="ModuloMultiplier">
 </div>
-<button type="button" onclick="Update(200, 15, 7)">Click Me!</button>
+<button type="button" onclick="UpdateButton()">Click Me!</button>
 
 
