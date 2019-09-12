@@ -54,7 +54,8 @@ for(let i=0; i<n; i++){
     let j = (i*m)%n;
     drawLine(ctx, circlePoints[i], circlePoints[j]);
 }
-
+c.width = 400;
+c.height = 300;
 </script>
 
 
