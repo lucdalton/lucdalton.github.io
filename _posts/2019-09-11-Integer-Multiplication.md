@@ -45,13 +45,13 @@ let centre = {x:100.5, y:100.5};
 let radius = 300;
 let n = 301;
 let m = 4;
-*/
 drawCircle(ctx, centre, radius);
 let circlePoints = getPointsOnCircle(centre, radius, n);
 for(let i=0; i<n; i++){
     let j = (i*m)%n;
     drawLine(ctx, circlePoints[i], circlePoints[j]);
 }
+*/
 
 function Update(width, n, m){
 
