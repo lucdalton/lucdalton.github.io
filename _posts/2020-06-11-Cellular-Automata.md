@@ -3,7 +3,7 @@ layout: post
 title:  "Cellular Automata"
 date:   2020-05-25 17:14:23 +0800
 categories: programming 
-permalink: multiplication
+permalink: cellularautomata
 ---
 
 
